@@ -2,6 +2,11 @@ body {
     margin: 0;
 }
 
+#map {
+    height: 100%;
+    width: 100%;
+}
+
 #nav {
     background-color: blue;
     height: 50px;
@@ -17,7 +22,3 @@ body {
     height: 700px;
 }
 
-#map {
-    height: 100%;
-    width: 100%;
-}
