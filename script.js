@@ -5,12 +5,16 @@ window.onload = () => {
 }
 
 let map;
+let infoWindow;
+
 function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {
         center: {lat: -34.397, lng: 150.644},
-        zoom: 8,
+        zoom: 4,
     });
+    infoWindow = new google.maps.InfoWindow();
 }
+
 
 const getCountryData = () => {
     // Fetch data from Covid API
@@ -18,6 +22,42 @@ const getCountryData = () => {
     .then((response)=>{
         return response.json()
     }).then((data)=>{
-        console.log(data);
+        showDataOnMap(data);
     })
+}
+
+const showDataOnMap = (data) => {
+    // Show data on map
+
+    data.map((country)=> {
+        let countryCenter = {
+            lat: country.countryInfo.lat,
+            lng: country.countryInfo.long
+        }
+
+        let countryCircle = new google.maps.Circle({
+            strokeColor: "#FF0000",
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: "#FF0000",
+            fillOpacity: 0.35,
+            map: map,
+            center: countryCenter,
+            radius: country.casesPerOneMillion * 15,
+          });  
+
+          let infoWindow = new google.maps.InfoWindow({
+            content: "Hello",
+            position: countryCircle.center
+          });
+          google.maps.event.addListener(countryCircle, 'mouseover', function() {
+            infoWindow.open(map);
+        });
+
+        google.maps.event.addListener(countryCircle, 'mouseout', function(){
+            infoWindow.close();
+        })
+
+    })
+    
 }
