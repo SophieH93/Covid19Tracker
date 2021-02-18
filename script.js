@@ -23,6 +23,7 @@ const getCountryData = () => {
         return response.json()
     }).then((data)=>{
         showDataOnMap(data);
+        showDataInTable(data);
     })
 }
 
@@ -79,4 +80,20 @@ const showDataOnMap = (data) => {
 
     })
     
+}
+
+const showDataInTable = (data) => {
+    // Displays table data
+    let html = '';
+    data.forEach((country)=>{
+        html += `
+            <tr>
+                <td>${country.country}</td>
+                <td>${country.cases}</td>
+                <td>${country.recovered}</td>
+                <td>${country.deaths}</td>
+            </tr>        
+        `
+    })
+    document.getElementById('table-data').innerHTML = html;
 }
