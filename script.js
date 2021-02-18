@@ -55,13 +55,13 @@ const showDataOnMap = (data) => {
                     ${country.country}
                 </div>
                 <div class="info-confirmed">
-                  ${country.cases}
+                Total: ${country.cases}
                 </div>
                 <div class="info-recovered">
-                    ${country.recovered}
+                   Recovered:  ${country.recovered}
                 </div>
                 <div class="info-deaths">
-                  ${country.deaths}
+                 Deaths: ${country.deaths}
                 </div>
             </div>          
           `
@@ -74,9 +74,9 @@ const showDataOnMap = (data) => {
             infoWindow.open(map);
         });
 
-        google.maps.event.addListener(countryCircle, 'mouseout', function(){
-            infoWindow.close();
-        })
+        // google.maps.event.addListener(countryCircle, 'mouseout', function(){
+        //     infoWindow.close();
+        // })
 
     })
     
