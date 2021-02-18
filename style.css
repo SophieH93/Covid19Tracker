@@ -22,3 +22,19 @@ body {
     height: 700px;
 }
 
+.info-flag img {
+    width: 100px;
+    border-radius: 5px;
+}
+
+.info-name {
+    font-size: 20px;
+    font-weight: bold;
+    color: #555;
+}
+
+.info-confirmed, .info-recovered, .info-deaths {
+    font-size: 16px;
+    margin-top: 5px;
+}
+
