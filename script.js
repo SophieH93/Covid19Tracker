@@ -10,7 +10,7 @@ let infoWindow;
 function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {
         center: {lat: -34.397, lng: 150.644},
-        zoom: 4,
+        zoom: 2,
     });
     infoWindow = new google.maps.InfoWindow();
 }
@@ -48,8 +48,7 @@ const showDataOnMap = (data) => {
 
           let html = `
             <div class="info-container">
-                <div class="info-flag">
-                    <img src="${country.countryInfo.flag}"/>
+                <div class="info-flag" style="background-image: url(${country.countryInfo.flag});">                    
                 </div>
                 <div class="info-name">
                     ${country.country}
@@ -74,9 +73,9 @@ const showDataOnMap = (data) => {
             infoWindow.open(map);
         });
 
-        // google.maps.event.addListener(countryCircle, 'mouseout', function(){
-        //     infoWindow.close();
-        // })
+        google.maps.event.addListener(countryCircle, 'mouseout', function(){
+            infoWindow.close();
+        })
 
     })
     
