@@ -3,6 +3,7 @@
 window.onload = () => {
     getCountryData();
     buildChart();
+    getHistoricalData();
 }
 
 let map;
@@ -26,6 +27,15 @@ const getCountryData = () => {
     }).then((data)=>{
         showDataOnMap(data);
         showDataInTable(data);
+    })
+}
+
+const getHistoricalData = () => {
+    fetch("https://disease.sh/v3/covid-19/historical/all?lastdays=30")
+    .then((response)=>{
+        return response.json()
+    }).then((data)=>{
+        console.log(data);
     })
 }
 
