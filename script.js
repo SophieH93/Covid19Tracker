@@ -35,29 +35,63 @@ const getHistoricalData = () => {
     .then((response)=>{
         return response.json()
     }).then((data)=>{
-        console.log(data);
+      let chartData = buildChartData(data);
+      buildChart(chartData);
     })
 }
 
+const buildChartData = (data) => {
+    let chartData = [];
+    for(let date in data.cases){
+        let newDataPoint = {
+            x: date,
+            y: data.cases[date]
+        }
+        chartData.push(newDataPoint);
+    }
+    return chartData;
+}
 
-const buildChart = () => {
+const buildChart = (chartData) => {
+    var timeFormat = 'MM/DD/YY';
     var ctx = document.getElementById('myChart').getContext('2d');
-    var chart = new Chart(ctx, {
-        // The type of chart we want to create
+    chart = new Chart(ctx, {
         type: 'line',
-
-        // The data for our dataset
         data: {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
             datasets: [{
-                label: 'My First dataset',
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgb(255, 99, 132)',
-                data: [0, 10, 5, 2, 20, 30, 45]
+                label: 'Total Cases',
+                backgroundColor: '#1d2c4d',
+                borderColor: '#1d2c4d',
+                data: chartData
             }]
         },
 
-        options: {}
+        options: {
+            tooltips: {
+                mode: 'index',
+                intersect: false,
+            },
+            scales:     {
+                xAxes: [{
+                    type: "time",
+                    time: {
+                        format: timeFormat,
+                        tooltipFormat: 'll' 
+                    },
+                    scaleLabel: {
+                        display: true,
+                        lableString: 'Date'
+                    }
+                }],
+                yAxes: [{
+                    ticks: {
+                        callback: function(value, index, values) {
+                            return numeral(value).format('0a');
+                        }
+                    }              
+                }]
+            }
+        }
     });
 }
 
