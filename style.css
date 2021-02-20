@@ -7,6 +7,12 @@ body {
     width: 100%;
 }
 
+.chart-data {
+    width: 30%;
+    margin-left: 30px;
+    margin-top: 20px;
+}
+
 #nav {
     height: 50px;
 }
@@ -23,9 +29,10 @@ body {
 }
 
 .country-data {
+    width: 40%;
     margin-top: 20px;
     overflow: scroll;
-    height: 400px;
+    border-radius: 10px;
 }
 
 .info-flag img {
