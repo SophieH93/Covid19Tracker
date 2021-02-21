@@ -50,3 +50,9 @@
 .stats-container .card-body {
     padding: 1rem;
 }
+
+.side-panel-container {
+    background-color: #EFF2F6;
+    border-bottom-left-radius: 30px;
+    border-top-left-radius: 30px;
+}
