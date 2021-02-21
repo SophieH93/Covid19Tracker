@@ -1,3 +1,6 @@
+body {
+    background-color: #f5f6f8;
+}
 
 .main {
     height: 100vh;
@@ -49,11 +52,26 @@
 
 .stats-container .card {
     border-radius: 12px;
-    background-color: #EFF2F6;
+    background-color: #fff;
+    box-shadow: 0 0 9px -4px rgba(0,0,0,0.5);
 }
 
 .stats-container .card-body {
     padding: 1rem;
+}
+
+.stats-container .card-title {
+    color: #695d5c;
+    font-weight: 400;
+}
+
+.stats-container .card-text {
+    font-weight: 600;
+}
+
+
+.stats-container .total {
+    font-size: 0.8rem;    
 }
 
 .side-panel-container {
@@ -63,18 +81,14 @@
 }
 
 .total-number {
-    color: #1d2c4d;
-}
-
-.active-number {
-    color: #9d80fe;
+    color: #cc1034;
 }
 
 .recovered-number {
-    color: #7dd71d;
+    color: #7fd992;
 }
 
 .deaths-number {
-    color: #fb4443;
+    color: #fa5575;
 }
 
