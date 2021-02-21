@@ -4,6 +4,7 @@ window.onload = () => {
     getCountryData();
     buildChart();
     getHistoricalData();
+    getWorldCoronaData();
 }
 
 let map;
@@ -21,12 +22,13 @@ function initMap() {
 
 const getCountryData = () => {
     // Fetch data from Covid API
-    fetch("https://disease.sh/v3/covid-19/countries")
+    fetch("http://localhost:3000/countries")
     .then((response)=>{
         return response.json()
     }).then((data)=>{
         showDataOnMap(data);
         showDataInTable(data);
+       
     })
 }
 
@@ -40,6 +42,15 @@ const getHistoricalData = () => {
     })
 }
 
+const getWorldCoronaData = () =>{
+    fetch("https://disease.sh/v3/covid-19/all")
+    .then((response)=>{
+        return response.json()
+    }).then((data)=>{
+        buildPieChart(data);
+    })
+}
+
 const buildChartData = (data) => {
     let chartData = [];
     for(let date in data.cases){
@@ -50,6 +61,35 @@ const buildChartData = (data) => {
         chartData.push(newDataPoint);
     }
     return chartData;
+}
+
+const buildPieChart = (data) => {
+    var ctx = document.getElementById('myPieChart').getContext('2d');
+    var myPieChart = new Chart(ctx, {
+        type: 'pie',
+        data:  {
+            datasets: [{
+                data: [
+                    data.active,
+                    data.recovered, 
+                    data.deaths
+                ],
+                backgroundColor: [
+                    '#9d80fe',
+                    '#7dd71d',
+                    'fb4443'                   
+                ]
+            }],
+            labels: [
+                'Active',
+                'Recovered',
+                'Deaths'
+            ]
+        },      
+        options: {
+            maintainAspectRatio: false,
+        }  
+    });
 }
 
 const buildChart = (chartData) => {
@@ -67,6 +107,7 @@ const buildChart = (chartData) => {
         },
 
         options: {
+            maintainAspectRatio: false,
             tooltips: {
                 mode: 'index',
                 intersect: false,
@@ -78,10 +119,6 @@ const buildChart = (chartData) => {
                         format: timeFormat,
                         tooltipFormat: 'll' 
                     },
-                    scaleLabel: {
-                        display: true,
-                        lableString: 'Date'
-                    }
                 }],
                 yAxes: [{
                     ticks: {
