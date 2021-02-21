@@ -66,7 +66,17 @@ const getWorldCoronaData = () =>{
         return response.json()
     }).then((data)=>{
         buildPieChart(data);
+        setStatsData(data);
     })
+}
+
+const setStatsData = (data) => {
+    let addedCases = numeral(data.todayCases).fornat('+0,0');
+    let addedRecovered = numeral(data.todayRecovered).fornat('+0,0');
+    let addedDeaths = numeral(data.todayDeaths).fornat('+0,0');
+    document.querySelector('.total-number').innerHTML = addedCases;
+    document.querySelector('.recovered-number').innerHTML = addedRecovered;
+    document.querySelector('.deaths-number').innerHTML = addedDeaths;
 }
 
 const showDataOnMap = (data, casesType="cases") => {
