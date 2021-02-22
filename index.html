@@ -21,7 +21,7 @@
 </head>
 
 <body>
-    <div class="container-fluid main">
+    <!-- <div class="container-fluid main">
         <div class="row">
             <div class="col-8">
                 <div class="row header-container">
@@ -41,7 +41,7 @@
                             <div class="card-body">
                               <h6 class="card-title">Coronavirus Cases</h6>
                               <h3 class="card-text total-number">1,456,542</h3>
-                              <div class="text-muted font-weight-bold totsl cases-total">1.69m Total</div>
+                              <div class="text-muted font-weight-bold total cases-total">1.69m Total</div>
                             </div>
                           </div>
                     </div>                   
@@ -50,7 +50,7 @@
                             <div class="card-body">
                               <h6 class="card-title">Recovered</h6>
                               <h3 class="card-text recovered-number">302,965</h3>
-                              <div class="text-muted font-weight-bold totsl recovered-total">1.69m Total</div>
+                              <div class="text-muted font-weight-bold total recovered-total">1.69m Total</div>
                             </div>
                           </div>
                     </div>
@@ -59,9 +59,9 @@
                             <div class="card-body">
                               <h6 class="card-title">Deaths</h6>
                               <h3 class="card-text deaths-number">82, 191</h3>
-                              <div class="text-muted font-weight-bold totsl deaths-total">1.69m Total</div>
+                              <div class="text-muted font-weight-bold total deaths-total">1.69m Total</div>
                             </div>
-                          </div>
+                        </div>
                     </div>
                 </div>
                 <div class="row map-container mt-3">
@@ -69,21 +69,121 @@
                         <div id="map"></div>
                     </div>
                 </div>
-                <!-- <div class="row chart-container mt-3">
-                    <div class="col linear-chart p-3 mr-3">
+                <div class="row chart-container mt-3">
+                    <div class="col linear-chart mr-3">
+                      <canvas id="myChart"></canvas>
+                    </div>
+                    
+            </div>     
+            <div class="col-4 side-panel-container my-3"> 
+                <div class="cases-table-container">
+                    <h4>Live Cases by Country</h4>
+                     <div class="country-data">
+                        <table class="table table-dark"> 
+                            <tbody id="table-data">
+                            </tbody>
+                        </table>
+                     </div>
+                </div>            
+                <div class="chart-container mt-3">
+                    <h4>Total Cases Globally</h4>
+                    <div class="linear-chart p-3 ">
                         <canvas id="myChart"></canvas>
                     </div>
-                    <div class="col p-3">
-                        <canvas id="myPieChart"></canvas>                        
-                    </div>
-                </div>                 -->
-            </div>            
-            <div class="col-4 side-panel-container my-3" >
-                
+                </div>               
             </div>
         </div>
-    </div>
+    </div> -->
+            
+  
 
+
+    <div class="container-fluid main">
+        <div class="row">
+          <div class="col-8">
+            <div class="row header-container">
+              <div class="col title-container">
+                <h2>COVID-19 Tracker</h2>
+              </div>
+              <div class="col search-container">
+                <div class="ui fluid search selection dropdown">
+                  <input type="hidden" name="country">
+                  <i class="dropdown icon"></i>
+                  <div class="default text">Select Country</div>
+                  <div class="menu">
+                  </div>
+                 </div>
+              </div>
+            </div>
+            <div class="row stats-container">
+              <div class="col">
+                <div class="card cases" onclick="changeDataSelection('cases')">
+                  <div class="tab-selection"></div>
+                  <div class="card-body">
+                    <h6 class="card-title">Coronavirus Cases</h6>
+                    <h3 class="card-subtitle mb-2 total-number">1,436,886</h3>
+                    <div class="text-muted font-weight-bold total cases-total">1.69M Total</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card recovered" onclick="changeDataSelection('recovered')">
+                  <div class="tab-selection"></div>
+                  <div class="card-body">
+                    <h6 class="card-title">Recovered</h6>
+                    <h3 class="card-subtitle mb-2 recovered-number">302,964</h3>
+                    <div class="text-muted font-weight-bold total recovered-total">1.69M Total</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card deaths" onclick="changeDataSelection('deaths')">
+                  <div class="tab-selection"></div>
+                  <div class="card-body">
+                    <h6 class="card-title">Deaths</h6>
+                    <h3 class="card-subtitle mb-2 deaths-number">82,191</h3>
+                    <div class="text-muted font-weight-bold total deaths-total">1.69M Total</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row map-container mt-3">
+              <div class="col">
+                <div id="map"></div>
+              </div>
+            </div>
+            <!-- <div class="row chart-container mt-3">
+              <div class="col linear-chart p-3 mr-3">
+                <canvas id="myChart"></canvas>
+              </div>
+              <div class="col p-3">
+                <canvas id="myPieChart"></canvas>
+              </div>
+            </div> -->
+          </div>
+          <div class="col-4 side-panel-container my-3">
+            <div class="cases-table-container">
+              <h4>Live Cases by Country</h4>
+              <div class="country-data">
+                <table class="table">
+                  <tbody id="table-data">
+    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="chart-container mt-3">
+              <h4>Total Cases Globally</h4>
+              <div class="linear-chart p-3">
+                <canvas id="myChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+   
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"
