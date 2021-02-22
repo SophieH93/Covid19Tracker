@@ -1,8 +1,7 @@
 window.onload = () => {
     getCountryData();
     getHistoricalData();
-    getWorldCoronaData();
-    
+    getWorldCoronaData();    
 }
 
 let map;
@@ -47,7 +46,6 @@ const getCountryData = () => {
         coronaGlobalyData = data;
         showDataOnMap(data);
         showDataInTable(data);     
-        setStatsData(data);  
     })
 }
 
@@ -78,7 +76,7 @@ const setStatsData = (data) => {
     let totalCases = numeral(data.cases).format('0.0a');
     let totalDeaths= numeral(data.deaths).format('0.0a');
     let totalRecovered = numeral(data.recovered).format('0.0a');
-    document.querySelector('.total-number').innerHTML = addedCases;
+    document.querySelector('.total-number').innerHTML = addedCases;  
     document.querySelector('.recovered-number').innerHTML = addedRecovered;
     document.querySelector('.deaths-number').innerHTML = addedDeaths;
     document.querySelector('.cases-total').innerHTML = `${totalCases} Total`;
@@ -138,22 +136,22 @@ const showDataOnMap = (data, casesType="cases") => {
             infoWindow.close();
         })
 
-    })
-    
+    })    
 }
 
 const showDataInTable = (data) => {
     // Displays table data
-    let html = '';
+    var html = '';
     data.forEach((country)=>{
         html += `
             <tr>
-                <td>${country.country}</td>
-                <td>${country.cases}</td>
-                <td>${country.recovered}</td>
-                <td>${country.deaths}</td>
+                <td>${country.country}</td>                
+                <td>${numeral(country.cases).format('0,0')}</td>
+                
             </tr>        
         `
     })
     document.getElementById('table-data').innerHTML = html;
 }
+
+
