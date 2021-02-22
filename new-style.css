@@ -26,7 +26,6 @@ body {
 }
 
 .chart-container {
-    height: 300px;
     margin-left: 0;
     margin-right: 0;
 }
@@ -51,6 +50,8 @@ body {
 }
 
 .stats-container .card {
+    overflow: hidden;
+    cursor: pointer;
     border-radius: 12px;
     background-color: #fff;
     box-shadow: 0 0 9px -4px rgba(0,0,0,0.5);
@@ -69,15 +70,26 @@ body {
     font-weight: 600;
 }
 
-
 .stats-container .total {
     font-size: 0.8rem;    
 }
 
 .side-panel-container {
-    background-color: #EFF2F6;
+    background-color: #fff;
     border-bottom-left-radius: 30px;
     border-top-left-radius: 30px;
+    box-shadow: 0 0 9px -4px rgba(0,0,0,0.5);
+    padding-top: 15px;
+}
+
+.cases-table-container h4, .chart-container h4 {
+    font-weight: 400;
+    color: #6A5D5D;
+}
+
+.country-data .table td {
+    border: none;
+    padding: 0.5rem;
 }
 
 .total-number {
