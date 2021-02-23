@@ -1,5 +1,5 @@
 window.onload = () => {
-    getCountryData();
+    getCountriesData();
     getHistoricalData();
     getWorldCoronaData();    
 }
@@ -45,12 +45,15 @@ const clearTheMap = () => {
 
 const initDropdown = (searchList) => {
     $('.ui.dropdown').dropdown({
-        values: searchList
-     });
+        values: searchList,
+        onChange: function(value, text) {
+            getCountryData(value);
+        }
+    });
 }
 
 const setSearchList = (data) => {
-    // Function to select all countries
+    // Function to select all countries from dropdown
     let searchList = [];
     searchList.push(worldwideSelection);
     data.forEach((countryData)=>{
@@ -62,7 +65,7 @@ const setSearchList = (data) => {
     initDropdown(searchList);
 }
 
-const getCountryData = () => {
+const getCountriesData = () => {
     // Fetch data from Covid API
     fetch("http://localhost:3000/countries")
     .then((response)=>{
@@ -72,6 +75,16 @@ const getCountryData = () => {
         setSearchList(data);
         showDataOnMap(data);
         showDataInTable(data);     
+    })
+}
+
+const getCountryData = (countryIso) => {
+    const url = "https://disease.sh/v3/covid-19/countries/" + countryIso;
+    fetch(url)
+    .then((response)=>{
+        return response.json()
+    }).then((data)=>{
+        setStatsData(data);
     })
 }
 
