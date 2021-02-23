@@ -47,7 +47,11 @@ const initDropdown = (searchList) => {
     $('.ui.dropdown').dropdown({
         values: searchList,
         onChange: function(value, text) {
-            getCountryData(value);
+            if(value !== worldwideSelection.value){
+                getCountryData(value);
+            } else {
+                getWorldCoronaData();
+            }           
         }
     });
 }
