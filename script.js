@@ -35,9 +35,16 @@ function initMap() {
     infoWindow = new google.maps.InfoWindow();
 }
 
-const changeDataSelection = (casesType) => {
+const changeDataSelection = (elem, casesType) => {
     clearTheMap();
     showDataOnMap(coronaGlobalyData, casesType);
+    setActiveTab(elem);
+}
+
+const setActiveTab = (elem) => {
+    const activeElement = document.querySelector('.card.active');
+    activeElement.classList.remove('active');
+    elem.classList.add("active");
 }
 
 const clearTheMap = () => {
