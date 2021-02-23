@@ -35,6 +35,11 @@ const buildChart = (chartData) => {
                 intersect: false,
                
             },
+            elements: {
+                point: {
+                    radius: 0
+                }
+            },
             scales:     {
                 xAxes: [{                   
                     type: "time",
