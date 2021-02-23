@@ -1,12 +1,16 @@
 
 const buildChartData = (data) => {
     let chartData = [];
+    let lastDataPoint;
     for(let date in data.cases){
-        let newDataPoint = {
-            x: date,
-            y: data.cases[date]
-        }
-        chartData.push(newDataPoint);
+        if(lastDataPoint){
+            let newDataPoint = {
+                x: date,
+                y: data.cases[date] - lastDataPoint
+          }   
+           chartData.push(newDataPoint);        
+        }        
+        lastDataPoint = data.cases[date];
     }
     return chartData;
 }
@@ -19,20 +23,20 @@ const buildChart = (chartData) => {
         data: {
             datasets: [{
                 label: 'Total Cases',
-                backgroundColor: '#1d2c4d',
-                borderColor: '#1d2c4d',
+                backgroundColor: '#f15572',
+                borderColor: '#cc1034',
                 data: chartData
             }]
         },
-
         options: {
             maintainAspectRatio: false,
             tooltips: {
                 mode: 'index',
                 intersect: false,
+               
             },
             scales:     {
-                xAxes: [{
+                xAxes: [{                   
                     type: "time",
                     time: {
                         format: timeFormat,
@@ -40,6 +44,9 @@ const buildChart = (chartData) => {
                     },
                 }],
                 yAxes: [{
+                    gridLines: {
+                        display: false
+                    },
                     ticks: {
                         callback: function(value, index, values) {
                             return numeral(value).format('0a');
