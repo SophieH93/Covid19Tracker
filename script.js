@@ -21,10 +21,14 @@ var casesTypeColours = {
     deaths: '#fb4443'
 }
 
+const mapCenter = {
+    lat: 34.80746,
+    lng: -40.4796
+}
 
 function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {
-        center: {lat: 53.350140, lng: -6.266155},
+        center: mapCenter,
         zoom: 2,
         styles: mapStyle
     });
@@ -43,12 +47,22 @@ const clearTheMap = () => {
     }
 }
 
+const setMapCenter = (lat, long, zoom) => {
+    // Changes the center of the map
+    map.setZoom(zoom);
+    map.panTo({
+        lat: lat,
+        lng: long
+    });
+}
+
+
 const initDropdown = (searchList) => {
     $('.ui.dropdown').dropdown({
         values: searchList,
         onChange: function(value, text) {
             if(value !== worldwideSelection.value){
-                getCountryData(value);
+                getCountryData(value);               
             } else {
                 getWorldCoronaData();
             }           
@@ -88,6 +102,7 @@ const getCountryData = (countryIso) => {
     .then((response)=>{
         return response.json()
     }).then((data)=>{
+        setMapCenter(data.countryInfo.lat, data.countryInfo.long, 3);
         setStatsData(data);
     })
 }
@@ -109,6 +124,8 @@ const getWorldCoronaData = () =>{
     }).then((data)=>{
         // buildPieChart(data);
         setStatsData(data);
+        setMapCenter(mapCenter.lat, mapCenter.long, 2);
+
     })
 }
 
