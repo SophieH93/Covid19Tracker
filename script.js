@@ -8,6 +8,12 @@ let map;
 let infoWindow;
 let coronaGlobalyData;
 let mapCircles = [];
+const worldwideSelection = {
+    name: 'Worldwide',
+    value: 'www',
+    selected: true
+}
+
 var casesTypeColours = {
     cases: '#1d2c4d',
     active: '#9d80fe',
@@ -37,6 +43,25 @@ const clearTheMap = () => {
     }
 }
 
+const initDropdown = (searchList) => {
+    $('.ui.dropdown').dropdown({
+        values: searchList
+     });
+}
+
+const setSearchList = (data) => {
+    // Function to select all countries
+    let searchList = [];
+    searchList.push(worldwideSelection);
+    data.forEach((countryData)=>{
+        searchList.push({
+            name: countryData.country,
+            value: countryData.countryInfo.iso3
+        })
+    })
+    initDropdown(searchList);
+}
+
 const getCountryData = () => {
     // Fetch data from Covid API
     fetch("http://localhost:3000/countries")
@@ -44,6 +69,7 @@ const getCountryData = () => {
         return response.json()
     }).then((data)=>{
         coronaGlobalyData = data;
+        setSearchList(data);
         showDataOnMap(data);
         showDataInTable(data);     
     })
