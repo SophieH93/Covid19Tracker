@@ -72,7 +72,8 @@ const buildPieChart = (data) => {
                 data: [
                     data.active,
                     data.recovered, 
-                    data.deaths
+                    data.deaths,
+                    data.vaccine
                 ],
                 backgroundColor: [
                     '#9d80fe',
@@ -83,7 +84,8 @@ const buildPieChart = (data) => {
             labels: [
                 'Active',
                 'Recovered',
-                'Deaths'
+                'Deaths',
+                'Vaccine'
             ]
         },      
         options: {
