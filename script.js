@@ -136,12 +136,16 @@ const getWorldCoronaData = () =>{
     })
 }
 
+
+
 const setStatsData = (data) => {
     let addedCases = numeral(data.todayCases).format('+0,0');
     let addedRecovered = numeral(data.todayRecovered).format('+0,0');
     let addedDeaths = numeral(data.todayDeaths).format('+0,0');
+
     let totalCases = numeral(data.cases).format('0.0a');
     let totalDeaths= numeral(data.deaths).format('0.0a');
+    let totalVaccine= numeral(data.vaccine).format('0.0a');
     let totalRecovered = numeral(data.recovered).format('0.0a');
     document.querySelector('.total-number').innerHTML = addedCases;  
     document.querySelector('.recovered-number').innerHTML = addedRecovered;
@@ -149,6 +153,8 @@ const setStatsData = (data) => {
     document.querySelector('.cases-total').innerHTML = `${totalCases} Total`;
     document.querySelector('.recovered-total').innerHTML = `${totalRecovered} Total`;
     document.querySelector('.deaths-total').innerHTML = `${totalDeaths} Total`;
+    document.querySelector('.vaccine-total').innerHTML = `${totalVaccine} Total`;
+
 }
 
 const showDataOnMap = (data, casesType="cases") => {
@@ -188,6 +194,7 @@ const showDataOnMap = (data, casesType="cases") => {
                 <div class="info-deaths">
                  Deaths: ${country.deaths}
                 </div>
+                
             </div>          
           `
 
@@ -212,8 +219,10 @@ const showDataInTable = (data) => {
     data.forEach((country)=>{
         html += `
             <tr>
-                <td>${country.country}</td>                
-                <td>${numeral(country.cases).format('0,0')}</td>
+            <th class="table-heading"><img src="${
+                country.countryInfo.flag
+              }" /> ${country.country}</th>                            
+              <td>${numeral(country.cases).format('0,0')}</td>
                 
             </tr>        
         `
