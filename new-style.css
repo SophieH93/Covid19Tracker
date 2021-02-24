@@ -2,11 +2,6 @@ body {
     background-color: #f5f6f8;
 }
 
-.main {
-    height: 100vh;
-    max-width: 1280px;
-}
-
 .search-container{
     display: flex;
     align-items: center;
