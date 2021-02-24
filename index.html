@@ -13,6 +13,8 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/transition.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="new-style.css">
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4"></script>
@@ -25,11 +27,11 @@
 
 <body>
     <div class="container-fluid ">
-        <div class="row main">
-            <div class="col-12 col-lg-8 d-flex flex-column">
-                <div class="row header-container">
+        <div class="row main ">
+            <div class="col d-flex flex-column">
+                <div class="row header-container ">
                     <div class="col-sm title-container">
-                        <h2>COVID-19 Tracker</h2>
+                        <h2>C<i class="fas fa-virus"></i>VID-19 Tracker</h2>
                     </div>
                     <div class="col-sm search-container mt-3 mt-sm-0">
                         <div class="ui fluid search selection dropdown">
@@ -40,16 +42,16 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm mt-3 ">
+                    <div class="col-sm mt-4 ">
                         <label class="switch">
                             <input id="theme-switcher" type="checkbox">
                             <span class="slider round"></span>
                         </label>
-                    <!-- <button id="theme-switcher">Switch themes!</button> -->
+                        <!-- <button id="theme-switcher">Switch themes!</button> -->
                     </div>
                 </div>
-                <div class="row stats-container">
-                    <div class="col-12 col-sm-4 mb-3">
+                <div class="row mt-3 stats-container">
+                    <div class="col-12 col-sm-4  mb-3">
                         <div class="card cases active" onclick="changeDataSelection(this, 'cases')">
                             <div class="tab-selection"></div>
                             <div class="card-body">
@@ -58,8 +60,8 @@
                                 <div class="text-muted font-weight-bold total cases-total">1.69M Total</div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-12 col-sm-4 mb-3">
+                    </div>        
+                    <div class="col-12 col-sm-4  mb-3">
                         <div class="card recovered" onclick="changeDataSelection(this, 'recovered')">
                             <div class="tab-selection"></div>
                             <div class="card-body">
@@ -79,73 +81,127 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
-                <div class="row map-container mt-3 fled-grow-1">
-                    <div class="col">
-                        <div id="map"></div>
-                    </div>
-                </div>
-                <!-- <div class="row chart-container mt-3">
-              <div class="col linear-chart p-3 mr-3">
-                <canvas id="myChart"></canvas>
-              </div>
-              <div class="col p-3">
-                <canvas id="myPieChart"></canvas>
-              </div>
-            </div> -->
             </div>
-
-            <div class="col-12 col-lg-4 side-panel-container mt-3 d-flex flex-column">
-                <div class="cases-table-container">
-                    <h4>Live Cases by Country</h4>
-                    <div class="country-data">
-                        <table class="table">
-                            <tbody id="table-data">
-
-                            </tbody>
-                        </table>
-                    </div>
+        </div>
+            <div class="row map-container mt-3 fled-grow-1">
+                <div class="col">
+                    <div id="map"></div>
                 </div>
-                <div class="chart-container flex-grow-1 d-flex flex-column mt-3">
-                    <h4>Total Cases Globally</h4>
-                    <div class="linear-chart p-3">
+            </div>
+            <!-- <div class="row chart-container mt-3">
+                    <div class="col linear-chart p-3 mr-3">
                         <canvas id="myChart"></canvas>
                     </div>
-                </div>
+                    <div class="col p-3">
+                        <canvas id="myPieChart"></canvas>
+                    </div>
+                    </div> -->
+            </div>
+    <!-- <div class="col-12 col-lg-4 side-panel-container mt-3 d-flex flex-column">
+        <div class="cases-table-container">
+            <h4>Live Cases by Country</h4>
+            <div class="country-data">
+                <table class="table">
+                    <tbody id="table-data">
+                    </tbody>
+                </table>
             </div>
         </div>
-        <!-- News feed using Rss app feeder -->
-        <div class="row header-container">
-            <div class="col-sm title-container">
-                <h2>Latest News</h2>
+        <div class="chart-container flex-grow-1 d-flex flex-column mt-3">
+            <h4>Total Cases Globally</h4>
+            <div class="linear-chart p-3">
+                <canvas id="myChart"></canvas>
             </div>
         </div>
-        <div class="row">
-            <div class="col mt-5">
-                <div class="card">
-                    <div class="card-body" style="overflow-y: scroll; height: 50vh;">
-                        <iframe width="600" height="700" src="https://rss.app/embed/v1/U0TrxLtZ1GOaXgJY"
-                            frameBorder="0"></iframe> </div>
-                </div>
-            </div>
-            <div class="col mt-5">
-                <div class="card">
-                    <div class="card-body" style="overflow-y: scroll; height: 50vh;">
-                        <iframe width="600" height="700" src="https://rss.app/embed/v1/XtVm0DPzLA0FevCV"
-                            frameBorder="0"></iframe> </div>
-                </div>
-            </div>
-        </div>
-        <!-- Sympthons -->
-        <div class="row">
-            <div class="col mt-5">
-                <div class="card">
-                    dsfsfds
-                </div>
-            </div>
+    </div> -->
+    </div>
 
+
+    <div class="container-2 mt-5">
+        <div class="row">
+            <div class="col">                
+                <h4>Live Cases by Country</h4>
+                <div class="card country-data">
+                    <table class="table">
+                        <tbody id="table-data">
+                        </tbody>
+                    </table>
+                </div>            
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="card-title">Card 2</h1>   
+                        <iframe width="400" height="340" src="https://rss.app/embed/v1/U0TrxLtZ1GOaXgJY"
+                        frameBorder="0"></iframe> </div>
+                     
+                    </div>
+                </div>
+           
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="card-title">Card 3</h1>    
+                        <iframe width="400" height="340" src="https://rss.app/embed/v1/XtVm0DPzLA0FevCV"
+                        frameBorder="0"></iframe> 
+                    </div>
+                    
+                    </div>
+                </div>
+            </div>
         </div>
+
+       
+    </div>
+    <div class="container footer">
+        <div class="m-2 text-center">
+            <a href="https://github.com/SophieH93" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-github-alt" style="font-size: 2.2rem;"></i>
+            </a>
+            <span>&nbsp;</span>
+            <a href="https://www.instagram.com/irishgirldeveloper/" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-instagram" style="font-size: 2.2rem;"></i>
+            </a>
+            <span>&nbsp;</span>
+            <a href="https://www.linkedin.com/in/sophiehickey/" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-linkedin" style="font-size: 2.2rem;"></i>
+            </a>
+        </div>
+
+        <p class="text-center">Made by Sophie<br/> Copyright &copy; 2021</p>
+    </div>
+
+    <!-- News feed using Rss app feeder -->
+    <!-- <div class=" header-container">
+        <div class="col-sm title-container">
+            <h2>Latest News</h2>
+        </div>
+    </div>
+    <div class="">
+        <div class="col-12 col-sm-4  mt-5">
+            <div class="card">
+                <div class="card-body" style="overflow-y: scroll; height: 50vh;">
+                    <iframe width="600" height="700" src="https://rss.app/embed/v1/U0TrxLtZ1GOaXgJY"
+                        frameBorder="0"></iframe> </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-4  mt-5">
+            <div class="card">
+                <div class="card-body" style="overflow-y: scroll; height: 50vh;">
+                    <iframe width="600" height="700" src="https://rss.app/embed/v1/XtVm0DPzLA0FevCV"
+                        frameBorder="0"></iframe> </div>
+            </div>
+        </div>
+    </div> -->
+
+
+    </div>
+
+
+
+
+    </div>
     </div>
    
 
