@@ -15,7 +15,7 @@ const worldwideSelection = {
 }
 
 var casesTypeColours = {
-    cases: '#1d2c4d',
+    cases: '#ad7e31',
     active: '#9d80fe',
     recovered: '#7dd71d',
     deaths: '#fb4443'
@@ -29,7 +29,7 @@ const mapCenter = {
 function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {
         center: mapCenter,
-        zoom: 2,
+        zoom: 2.5,
         styles: mapStyle
     });
     infoWindow = new google.maps.InfoWindow();
@@ -129,7 +129,7 @@ const getWorldCoronaData = () =>{
     .then((response)=>{
         return response.json()
     }).then((data)=>{
-        // buildPieChart(data);
+        buildPieChart(data);
         setStatsData(data);
         setMapCenter(mapCenter.lat, mapCenter.long, 2);
 
@@ -168,9 +168,9 @@ const showDataOnMap = (data, casesType="cases") => {
         let countryCircle = new google.maps.Circle({
             strokeColor: casesTypeColours[casesType],
             strokeOpacity: 0.8,
-            strokeWeight: 2,
+            strokeWeight: 1,
             fillColor: casesTypeColours[casesType],
-            fillOpacity: 0.35,
+            fillOpacity: 0.20,
             map: map,
             center: countryCenter,
             radius: country[casesType]
@@ -228,6 +228,8 @@ const showDataInTable = (data) => {
         `
     })
     document.getElementById('table-data').innerHTML = html;
+    
+    
 }
 
 // Toggle switch for dark mode
