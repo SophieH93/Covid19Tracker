@@ -51,35 +51,45 @@
                     </div>
                 </div>
                 <div class="row mt-3 stats-container">
-                    <div class="col-12 col-sm-4  mb-3">
+                    <div class="col-md-3 col-sm-4  mb-3">
                         <div class="card cases active" onclick="changeDataSelection(this, 'cases')">
                             <div class="tab-selection"></div>
                             <div class="card-body">
                                 <h6 class="card-title">Coronavirus Cases</h6>
-                                <h3 class="card-subtitle mb-2 total-number">1,436,886</h3>
-                                <div class="text-muted font-weight-bold total cases-total">1.69M Total</div>
+                                <h3 class="card-subtitle mb-2 total-number"></h3>
+                                <div class="text-muted font-weight-bold total cases-total">Total</div>
                             </div>
                         </div>
                     </div>        
-                    <div class="col-12 col-sm-4  mb-3">
+                    <div class="col-md-3 col-sm-4  mb-3">
                         <div class="card recovered" onclick="changeDataSelection(this, 'recovered')">
                             <div class="tab-selection"></div>
                             <div class="card-body">
                                 <h6 class="card-title">Recovered</h6>
-                                <h3 class="card-subtitle mb-2 recovered-number">302,964</h3>
-                                <div class="text-muted font-weight-bold total recovered-total">1.69M Total</div>
+                                <h3 class="card-subtitle mb-2 recovered-number"></h3>
+                                <div class="text-muted font-weight-bold total recovered-total"> Total</div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-sm-4 mb-3">
+                    <div class="col-md-3 col-sm-4 mb-3">
                         <div class="card deaths" onclick="changeDataSelection(this, 'deaths')">
                             <div class="tab-selection"></div>
                             <div class="card-body">
                                 <h6 class="card-title">Deaths</h6>
-                                <h3 class="card-subtitle mb-2 deaths-number">82,191</h3>
-                                <div class="text-muted font-weight-bold total deaths-total">1.69M Total</div>
+                                <h3 class="card-subtitle mb-2 deaths-number"></h3>
+                                <div class="text-muted font-weight-bold total deaths-total">Total</div>
                             </div>
                         </div>
+                    </div>
+                    <div class="col-md-3 col-sm-4 mb-3">
+                        <div class="card pie" onclick="changeDataSelection(this, 'pie')">
+                            <div class="tab-selection"></div>
+                                <div class="row chart-container ">
+                                    <!-- <div class=" card "> -->
+                                        <canvas id="myPieChart"  style=" height: 170px;"></canvas> 
+                                    <!-- </div> -->
+                                </div>                            
+                        </div> 
                     </div>
                 </div>
             </div>
@@ -118,9 +128,9 @@
     </div>
 
 
-    <div class="container-2 mt-5">
+    <div class="container-fluid world-info mt-5">
         <div class="row">
-            <div class="col">                
+            <div class="col ">                
                 <h4>Live Cases by Country</h4>
                 <div class="card country-data">
                     <table class="table">
@@ -130,25 +140,24 @@
                 </div>            
             </div>
             <div class="col">
-                <div class="card">
-                    <div class="card-body">
-                        <h1 class="card-title">Card 2</h1>   
-                        <iframe width="400" height="340" src="https://rss.app/embed/v1/U0TrxLtZ1GOaXgJY"
-                        frameBorder="0"></iframe> </div>
+                <!-- <div class="card">
+                    <div class="card-body"> -->
+                        <!-- <h4 >Card 2</h4>    -->
+                        <!-- <iframe width="400" height="340" src="https://rss.app/embed/v1/U0TrxLtZ1GOaXgJY"
+                        frameBorder="0"></iframe> -->
+                        <h4>Irish Times News</h4>
+                        <iframe width="480" height="400" src="https://rss.app/embed/v1/U0TrxLtZ1GOaXgJY" frameBorder="0"></iframe>                    </div>
                      
-                    </div>
-                </div>
+                    <!-- </div>
+                </div> -->
            
             <div class="col">
-                <div class="card">
-                    <div class="card-body">
-                        <h1 class="card-title">Card 3</h1>    
-                        <iframe width="400" height="340" src="https://rss.app/embed/v1/XtVm0DPzLA0FevCV"
+                <h4>World Health Organization</h4>
+                        <iframe width="480" height="400" src="https://rss.app/embed/v1/XtVm0DPzLA0FevCV"
                         frameBorder="0"></iframe> 
                     </div>
                     
-                    </div>
-                </div>
+                   
             </div>
         </div>
 
@@ -203,7 +212,7 @@
 
     </div>
     </div>
-   
+    
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"> </script>
