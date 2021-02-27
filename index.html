@@ -1,20 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>COVID TRACKER</title>
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">  -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/dropdown.min.css">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/transition.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="new-style.css">
-
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4"></script>
@@ -22,18 +18,16 @@
     <script src="map-style.js"></script>
     <script src="script.js"></script>
     <script src="charts.js"></script>
-
 </head>
-
 <body>
     <div class="container-fluid ">
         <div class="row main ">
             <div class="col d-flex flex-column">
                 <div class="row header-container ">
-                    <div class="col-sm title-container">
+                    <div class="col-md-4 col-sm-6  title-container">
                         <h2>C<i class="fas fa-virus"></i>VID-19 Tracker</h2>
                     </div>
-                    <div class="col-sm search-container mt-3 mt-sm-0">
+                    <div class="col-md-4 col-sm-6 search-container mt-3 mt-sm-0">
                         <div class="ui fluid search selection dropdown">
                             <input type="hidden" name="country">
                             <i class="dropdown icon"></i>
@@ -42,26 +36,26 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm mt-4 ">
+                    <div class="col-md-4 col-sm-6 mt-3">
                         <label class="switch">
                             <input id="theme-switcher" type="checkbox">
                             <span class="slider round"></span>
                         </label>
-                        <!-- <button id="theme-switcher">Switch themes!</button> -->
                     </div>
                 </div>
                 <div class="row mt-3 stats-container">
-                    <div class="col-md-3 col-sm-4  mb-3">
+                    <div class="col-md-3 col-sm-12  mb-3">
                         <div class="card cases active" onclick="changeDataSelection(this, 'cases')">
                             <div class="tab-selection"></div>
                             <div class="card-body">
                                 <h6 class="card-title">Coronavirus Cases</h6>
                                 <h3 class="card-subtitle mb-2 total-number"></h3>
-                                <div class="text-muted font-weight-bold total cases-total">Total</div>
+                                <div class="text-muted font-weight-bold total cases-total">Total
+                                </div>
                             </div>
                         </div>
-                    </div>        
-                    <div class="col-md-3 col-sm-4  mb-3">
+                    </div>
+                    <div class="col-md-3 col-sm-12 mb-3">
                         <div class="card recovered" onclick="changeDataSelection(this, 'recovered')">
                             <div class="tab-selection"></div>
                             <div class="card-body">
@@ -71,7 +65,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-4 mb-3">
+                    <div class="col-md-3 col-sm-12 mb-3">
                         <div class="card deaths" onclick="changeDataSelection(this, 'deaths')">
                             <div class="tab-selection"></div>
                             <div class="card-body">
@@ -81,87 +75,50 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-4 mb-3">
+                    <div class="col-md-3 col-sm-12 mb-3">
                         <div class="card pie" onclick="changeDataSelection(this, 'pie')">
                             <div class="tab-selection"></div>
-                                <div class="row chart-container ">
-                                    <!-- <div class=" card "> -->
-                                        <canvas id="myPieChart"  style=" height: 170px;"></canvas> 
-                                    <!-- </div> -->
-                                </div>                            
-                        </div> 
+                            <div class="row chart-container ">
+                                <canvas id="myPieChart" style=" height: 170px;"></canvas>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-            <div class="row map-container mt-3 fled-grow-1">
-                <div class="col">
-                    <div id="map"></div>
-                </div>
-            </div>
-            <!-- <div class="row chart-container mt-3">
-                    <div class="col linear-chart p-3 mr-3">
-                        <canvas id="myChart"></canvas>
-                    </div>
-                    <div class="col p-3">
-                        <canvas id="myPieChart"></canvas>
-                    </div>
-                    </div> -->
-            </div>
-    <!-- <div class="col-12 col-lg-4 side-panel-container mt-3 d-flex flex-column">
-        <div class="cases-table-container">
-            <h4>Live Cases by Country</h4>
-            <div class="country-data">
-                <table class="table">
-                    <tbody id="table-data">
-                    </tbody>
-                </table>
+        <!-- Google map -->
+        <div class="row map-container mt-3 fled-grow-1">
+            <div class="col">
+                <div id="map"></div>
             </div>
         </div>
-        <div class="chart-container flex-grow-1 d-flex flex-column mt-3">
-            <h4>Total Cases Globally</h4>
-            <div class="linear-chart p-3">
-                <canvas id="myChart"></canvas>
-            </div>
-        </div>
-    </div> -->
     </div>
-
-
     <div class="container-fluid world-info mt-5">
         <div class="row">
-            <div class="col ">                
+            <div class="col-md-4 col-sm-12 ">
                 <h4>Live Cases by Country</h4>
                 <div class="card country-data">
                     <table class="table">
                         <tbody id="table-data">
                         </tbody>
                     </table>
-                </div>            
+                </div>
             </div>
-            <div class="col">
-                <!-- <div class="card">
-                    <div class="card-body"> -->
-                        <!-- <h4 >Card 2</h4>    -->
-                        <!-- <iframe width="400" height="340" src="https://rss.app/embed/v1/U0TrxLtZ1GOaXgJY"
-                        frameBorder="0"></iframe> -->
-                        <h4>Irish Times News</h4>
-                        <iframe width="480" height="400" src="https://rss.app/embed/v1/U0TrxLtZ1GOaXgJY" frameBorder="0"></iframe>                    </div>
-                     
-                    <!-- </div>
-                </div> -->
-           
-            <div class="col">
+            <!-- Real time news using Rss App -->
+            <div class="col-md-4 col-sm-12">
+                <h4>Irish Times News</h4>
+                <iframe width="480" height="400" src="https://rss.app/embed/v1/U0TrxLtZ1GOaXgJY"
+                    frameBorder="0"></iframe>
+            </div>
+            <div class="col-md-4 col-sm-12">
                 <h4>World Health Organization</h4>
-                        <iframe width="480" height="400" src="https://rss.app/embed/v1/XtVm0DPzLA0FevCV"
-                        frameBorder="0"></iframe> 
-                    </div>
-                    
-                   
+                <iframe width="480" height="400" src="https://rss.app/embed/v1/XtVm0DPzLA0FevCV"
+                    frameBorder="0"></iframe>
             </div>
         </div>
-
-       
+    </div>
+    <div class="col linear-chart p-3 mr-3">
+        <canvas id="myChart"></canvas>
     </div>
     <div class="container footer">
         <div class="m-2 text-center">
@@ -178,47 +135,13 @@
             </a>
         </div>
 
-        <p class="text-center">Made by Sophie<br/> Copyright &copy; 2021</p>
-    </div>
-
-    <!-- News feed using Rss app feeder -->
-    <!-- <div class=" header-container">
-        <div class="col-sm title-container">
-            <h2>Latest News</h2>
-        </div>
-    </div>
-    <div class="">
-        <div class="col-12 col-sm-4  mt-5">
-            <div class="card">
-                <div class="card-body" style="overflow-y: scroll; height: 50vh;">
-                    <iframe width="600" height="700" src="https://rss.app/embed/v1/U0TrxLtZ1GOaXgJY"
-                        frameBorder="0"></iframe> </div>
-            </div>
-        </div>
-        <div class="col-12 col-sm-4  mt-5">
-            <div class="card">
-                <div class="card-body" style="overflow-y: scroll; height: 50vh;">
-                    <iframe width="600" height="700" src="https://rss.app/embed/v1/XtVm0DPzLA0FevCV"
-                        frameBorder="0"></iframe> </div>
-            </div>
-        </div>
-    </div> -->
-
-
-    </div>
-
-
-
-
-    </div>
-    </div>
-    
-
+        <p class="text-center">Made by Sophie<br /> Copyright &copy; 2021</p>
+    </div>    
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKAthoDICHZ2eO5dbbBmxbD8LYl67_cBo&callback=initMap&libraries=&v=weekly" async defer></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"> </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/dropdown.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/transition.min.js"></script>
 </body>
-
 </html>
