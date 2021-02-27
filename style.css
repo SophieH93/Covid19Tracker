@@ -1,5 +1,6 @@
-body {
-    margin: 0;
+
+.main {
+    margin-top: 2rem;
 }
 
 #map {
@@ -13,26 +14,23 @@ body {
     margin-top: 20px;
 }
 
-#nav {
-    height: 50px;
-}
+/* 
 
 .map-info {
     background-color: bisque;
     height: 400px;
-}
+} */
 
-.data-info {
+/* .data-info {
     height: 700px;
     display: flex;
     justify-content: center;
-}
+} */
 
 .country-data {
-    width: 40%;
+    height: 400px;
     margin-top: 20px;
     overflow: scroll;
-    border-radius: 10px;
 }
 
 .info-flag img {
@@ -46,7 +44,7 @@ body {
     color: #555;
 }
 
-.info-container {
+ .info-container {
     width: 150px;
 }
 
@@ -61,4 +59,20 @@ body {
     font-size: 16px;
     margin-top: 5px;
 }
+ 
 
+
+ .world-info h4{
+     text-align: center;
+     color: rgb(206, 134, 0);
+     margin-bottom: 1rem;
+    font-size: 2rem;
+ }
+
+.footer i {
+    color: rgb(206, 134, 0);
+}
+
+.footer i:hover {
+    color: #fb4443;
+}
