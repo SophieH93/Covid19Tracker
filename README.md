@@ -1,8 +1,15 @@
 # Covid-19 Tracker
 
-This Covid tracker was created using Javascript.
-
 ![](covidgif.gif)
+
+This Covid tracker was created using Javascript, Google Maps and the Covid API is pulled from [Disease.sh](https://disease.sh/).
+
+As part of [Profit with Javacript](https://www.cleverprogrammer.com/) we were thought how to create this tracker and I further challenged myself by adding the **'dark mode'** feature and the **'news feed'** using [RSS Feed generator](https://rss.app/).
+
+## Future Features:
+- Include the coverage for the Vaccine.
+- Sort the Live cases from highest to lowest.
+
 
 ## Technologies used:
 - [Javascript](https://www.javascript.com/)
