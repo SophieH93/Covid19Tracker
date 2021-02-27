@@ -2,7 +2,7 @@
 
 This Covid tracker was created using Javascript.
 
-
+![](covidgif.gif)
 
 ## Technologies used:
 - [Javascript](https://www.javascript.com/)
