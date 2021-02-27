@@ -1,3 +1,5 @@
+
+
 window.onload = () => {
     getCountriesData();
     getHistoricalData();
@@ -145,7 +147,6 @@ const setStatsData = (data) => {
 
     let totalCases = numeral(data.cases).format('0.0a');
     let totalDeaths= numeral(data.deaths).format('0.0a');
-    let totalVaccine= numeral(data.vaccine).format('0.0a');
     let totalRecovered = numeral(data.recovered).format('0.0a');
     document.querySelector('.total-number').innerHTML = addedCases;  
     document.querySelector('.recovered-number').innerHTML = addedRecovered;
@@ -153,7 +154,6 @@ const setStatsData = (data) => {
     document.querySelector('.cases-total').innerHTML = `${totalCases} Total`;
     document.querySelector('.recovered-total').innerHTML = `${totalRecovered} Total`;
     document.querySelector('.deaths-total').innerHTML = `${totalDeaths} Total`;
-    document.querySelector('.vaccine-total').innerHTML = `${totalVaccine} Total`;
 
 }
 
